@@ -23,6 +23,28 @@ namespace EDSQConfig.API.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(Unit), 200)]
         [ProducesResponseType(typeof(string), 400)]
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateAppConfigCommand command)
+        {
+            try
+            {
+                var response = await Mediator.Send(command);
+                return Ok(response);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(Unit), 200)]
+        [ProducesResponseType(typeof(string), 400)]
         [ProducesResponseType(typeof(string), 404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateAppConfigCommand command)
@@ -42,5 +64,6 @@ namespace EDSQConfig.API.Controllers
                 return NotFound(ex.Message);
             }
         }
+
     }
 }

@@ -33,7 +33,8 @@ namespace EDSQConfig.Application.Test
             {
                 OrganizationId = _organizationId,
                 Name = "Aetna",
-                ClientAlphaID = "AET"
+                ClientAlphaID = "AET",
+                Active = true,
             });
 
             // Insert Configuration Definition

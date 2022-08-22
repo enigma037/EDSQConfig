@@ -22,7 +22,7 @@ namespace EDSQConfig.API.Controllers
                 var response = await Mediator.Send(command);
                 return Ok(response);
             }
-            catch(ValidationException ex)
+            catch (ValidationException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -33,7 +33,7 @@ namespace EDSQConfig.API.Controllers
 
         }
         [Produces("application/json")]
-        [ProducesResponseType(typeof(List<ListConfigurationDefinitonResponse>),200)]
+        [ProducesResponseType(typeof(List<ListConfigurationDefinitonResponse>), 200)]
         [HttpGet]
         public async Task<IActionResult> List([FromQuery] ListConfigurationDefinitionQuery query)
         {
@@ -41,21 +41,27 @@ namespace EDSQConfig.API.Controllers
             return Ok(response);
 
         }
-        [Produces("application/json")]
-        [ProducesResponseType(typeof(List<GetConfigurationDefinitionByIdResponse>), 200)]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id, [FromQuery] GetConfigurationDefinitionByIdQuery query)
-        {
-            query.Id = id;
-            var response = await Mediator.Send(query);
-            return Ok(response);
 
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(GetConfigurationDefinitionByIdResponse), 200)]
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetConfigurationDefinitionByIdQuery query)
+        {
+            try
+            {
+                var response = await Mediator.Send(query);
+                return Ok(response);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [Produces("application/json")]
-        [ProducesResponseType(typeof(Unit),200)]
-        [ProducesResponseType(typeof(string),400)]
-        [ProducesResponseType(typeof(string),404)]
+        [ProducesResponseType(typeof(Unit), 200)]
+        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(string), 404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateConfigurationDefinitionCommand command)
         {
