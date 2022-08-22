@@ -26,7 +26,10 @@ namespace EDSQConfig.Application.Test.TestOrganizations.Queries
 
             // Assert
             Assert.NotNull(result);
-            Assert.Contains(result, a => a.OrganizationId == _organizationId);
+            Assert.Contains(result, a => a.OrganizationId == _organizationId && 
+                                         a.ClientAlphaID == "AET" &&
+                                         a.Name == "Aetna" );
+            
 
         }
     }

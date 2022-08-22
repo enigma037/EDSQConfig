@@ -22,9 +22,14 @@ namespace EDSQConfig.Application.ApplicationConfigurations.Queries
         public async Task<List<ListAppConfigsResponse>> Handle(ListAppConfigsQuery request, CancellationToken cancellationToken)
         {
             var listResult = await _dbContext.ApplicationConfigurations
-                                              .Where(w => (string.IsNullOrEmpty(request.ApplicationCode) || request.ApplicationCode.Length < 2 || w.ApplicationCode.ToLower().Contains(request.ApplicationCode.ToLower())) &&
-                                              (string.IsNullOrEmpty(request.ConfigurationValue) || request.ConfigurationValue.Length < 2 || w.ConfigurationValue.ToLower().Contains(request.ConfigurationValue.ToLower())))
-                                              .Select(s => new ListAppConfigsResponse { }).ToListAsync(cancellationToken);
+                                              .Select(s => new ListAppConfigsResponse {
+                                                  Id= s.Id,
+                                              ApplicationCode = s.ApplicationCode,
+                                              ConfigurationValue = s.ConfigurationValue,
+                                              ConfigurationDefinitionId = s.ConfigurationDefinitionId,
+                                              OrganizationId = s.OrganizationId,
+                                              
+                                              }).ToListAsync(cancellationToken);
 
             return listResult;
         }
