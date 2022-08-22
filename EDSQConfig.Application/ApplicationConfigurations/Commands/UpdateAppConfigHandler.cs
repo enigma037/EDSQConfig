@@ -24,7 +24,7 @@ namespace EDSQConfig.Application.ApplicationConfigurations.Commands
             var applicationConfiguration = await _dbContext.ApplicationConfigurations.FindAsync(request.Id);
             if (applicationConfiguration == null)
             {
-                throw new NotFoundException("Invalid banner id.");
+                throw new NotFoundException("Invalid ApplicationConfiguration id.");
             }
 
             applicationConfiguration.ConfigurationDefinitionId = request.ConfigurationDefinitionId;
