@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SSIS_Config>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    
+
+<h1 class="m-3">SSIS Configuration</h1>
+
+<p>
+    <a class="btn btn-success w-25 m-3" asp-action="AddOrEdit">Create New</a>
+</p>
+<table id="ssisConfigTable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfigurationFilter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfiguredValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfiguredValueType)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfigurationFilter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfiguredValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackagePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfiguredValueType)
+            </td>
+            <td class="text-center">
+                <a class="text-gray-600" asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                <a class="text-gray-600" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm(@item.Id)" ><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script src="//code.jquery.com/jquery-3.5.1.js"></script>
+
+<script>
+    $(document).ready( function () {
+    $('#ssisConfigTable').DataTable({
+        "scrollX": true
+    });
+    } );
+</script>

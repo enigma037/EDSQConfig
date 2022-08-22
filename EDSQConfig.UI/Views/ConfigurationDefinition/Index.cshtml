@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ConfigurationDefinition>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="m-3">Configuration Definition</h1>
+
+<p>
+    <a class="btn btn-success w-25 m-3" asp-action="AddOrEdit">Create New</a>
+</p>
+<div class="m-3">
+<table id="configDetail" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfigurationType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfigurationDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateUserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdateUserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdateDateTime)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfigurationType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfigurationDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateUserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdateUserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdateDateTime)
+            </td>
+            <td class="text-center">
+                <a class="text-gray-600" asp-action="AddOrEdit" asp-route-id="@item.ID"><i class="bi bi-pencil-square"></i></a>
+                <a class="text-gray-600" asp-action="Delete" asp-route-id="@item.ID" onclick="return confirm(@item.ID)" ><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
+<script src="//code.jquery.com/jquery-3.5.1.js"></script>
+
+<script>
+    $(document).ready( function () {
+    $('#configDetail').DataTable({
+       "scrollX": true,
+    });
+    } );
+</script>

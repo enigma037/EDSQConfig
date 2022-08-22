@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <AssemblyName>.$(MSBuildProjectName)</AssemblyName>
+    <AssemblyVersion>1.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EDSQConfig.Common\EDSQConfig.Common.csproj" />
+    <ProjectReference Include="..\EDSQConfig.Domain\EDSQConfig.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SSIS_Configs\Commands\" />
+    <Folder Include="SSIS_Configs\Queries\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ApplicationConfiguration>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    
+
+<h1 class="m-3">Application Configuration</h1>
+
+<p>
+    <a class="btn btn-success w-25 m-3" asp-action="AddOrEdit">Create New</a>
+</p>
+<div class="m-3">
+<table  id="appConfigTable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfigurationDefinitionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfigurationValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisabledDateTime)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfigurationDefinitionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfigurationValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisabledDateTime)
+            </td>
+            <td class="text-center">
+                <a class="text-gray-600" asp-action="AddOrEdit" asp-route-id="@item.ID"><i class="bi bi-pencil-square"></i></a>
+                <a class="text-gray-600" asp-action="Delete" asp-route-id="@item.ID" onclick="return confirm(@item.ID)" ><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<script src="//code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready( function () {
+    $('#appConfigTable').DataTable({
+        "scrollX": true,
+    });
+    } );
+</script>
