@@ -30,7 +30,8 @@ namespace EDSQConfig.Application.ConfigurationDefinitions.Queries
             {
                 Id = dbConfigDef.Id,
                 ConfigurationType = dbConfigDef.ConfigurationType,
-                ConfigurationDescription = dbConfigDef.ConfigurationDescription
+                ConfigurationDescription = dbConfigDef.ConfigurationDescription,
+                DefaultValue= dbConfigDef.DefaultValue,
             };
             return response;
         }
