@@ -15,7 +15,7 @@ namespace EDSQConfig.Application.ApplicationConfigurations.Commands
                 .NotEmpty()
                 .WithMessage("Code is required.")
                 .MaximumLength(3)
-                .WithMessage("Maximum Character Limit is 3");
+                .WithMessage("Maximum Character Limit is 3.");
         }
     }
 }

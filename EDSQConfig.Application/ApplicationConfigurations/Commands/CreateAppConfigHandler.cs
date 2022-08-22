@@ -21,6 +21,7 @@ namespace EDSQConfig.Application.ApplicationConfigurations.Commands
             {
                 ApplicationCode = request.ApplicationCode,
                 ConfigurationDefinitionId = request.ConfigurationDefinitionId,
+                OrganizationId = request.OrganizationId,
                 ConfigurationValue = request.ConfigurationValue,
             };
             _dbContext.ApplicationConfigurations.Add(appConfiguration);
