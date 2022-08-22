@@ -65,5 +65,21 @@ namespace EDSQConfig.API.Controllers
             }
         }
 
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(GetByIdAppConfigResponse), 200)]
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetByIdAppConfigQuery query)
+        {
+            try
+            {
+                var response = await Mediator.Send(query);
+                return Ok(response);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
     }
 }
