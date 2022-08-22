@@ -40,7 +40,7 @@ namespace EDSQConfig.Application.Test.TestApplicationConfigurations.Commands
         }
 
         [Theory]
-        [InlineData(88, "Maximum Character Limit is 3.")]
+        [InlineData(88, "Invalid ApplicationConfiguration id.")]
         public async Task UpdateAppConfigHandler_ShouldThrowExceptionForInvalidAppConfigId(int id, string errorMessage)
         {
             // Arrange
@@ -55,7 +55,7 @@ namespace EDSQConfig.Application.Test.TestApplicationConfigurations.Commands
             var result = await Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(command, cancellationToken));
 
             // Assert           
-            Assert.Equal("Invalid ApplicationConfiguration id.", result.Message);
+            Assert.Equal(result.Message,errorMessage);
         }
 
         [Theory]
