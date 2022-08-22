@@ -21,6 +21,7 @@ namespace EDSQConfig.Infrastructure
             {
 
                 options.UseSqlServer(configuration.GetConnectionString("EDSConfig"));
+                
 
             });
 

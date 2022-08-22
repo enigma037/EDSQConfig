@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDSQConfig.Application.ConfigurationDefinitions.Queries
 {
-    public class ListConfigurationDefinitonResponse
+    public class GetConfigurationDefinitionByIdResponse
     {
         public int Id { get; set; }
         public string ConfigurationType { get; set; }
