@@ -24,7 +24,7 @@ namespace EDSQConfig.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddOrEdit(int id = 0)
+        public async Task<IActionResult> AddOrEdit(CancellationToken cancellationToken, int id = 0)
         {
             if (id == 0)
             {
@@ -32,7 +32,7 @@ namespace EDSQConfig.UI.Controllers
             }
             else
             {
-                var configurationDefinition = new ConfigurationDefinition();//await _mediator.Send(new GetConfigurationDefinitionDetailRequest { Id = id });
+                var configurationDefinition = await _service.GetByIdAsync(id, cancellationToken);//await _mediator.Send(new GetConfigurationDefinitionDetailRequest { Id = id });
                 if (configurationDefinition == null)
                 {
                     return NotFound();
@@ -51,11 +51,10 @@ namespace EDSQConfig.UI.Controllers
                 {
                     var command = _service.CreateAsync(configurationDefinition, cancellationToken);
                 }
-                //else
-                //{
-                //    var command = new UpdateConfigurationDefinitionCommand { configurationDefinition = configurationDefinition };
-                //    _mediator.Send(command);
-                //}
+                else
+                {
+                    var command = _service.UpdateAsync(id, configurationDefinition, cancellationToken);
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(configurationDefinition);

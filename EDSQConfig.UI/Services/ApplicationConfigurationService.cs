@@ -11,9 +11,15 @@ namespace EDSQConfig.UI.Services
             _apiService = apiService;
         }
 
-        public async Task<List<SelectItem>> GetOrganizationsSelectItemsAsync(CancellationToken cancellationToken)
+        public async Task<List<SelectItem>> GetConfigurationDefinitationSelectItemsAsync(CancellationToken cancellationToken)
         {
             var response = await _apiService.GetAsync<List<SelectItem>>("/organizations/select-options", cancellationToken: cancellationToken);
+            return response;
+        }
+
+        public async Task<List<SelectItem>> GetOrganizationsSelectItemsAsync(CancellationToken cancellationToken)
+        {
+            var response = await _apiService.GetAsync<List<SelectItem>>("/organizations", cancellationToken: cancellationToken);
             return response;
         }
     }

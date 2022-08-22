@@ -23,6 +23,7 @@ namespace EDSQConfig.UI.Controllers
         public async Task<IActionResult> AddOrEdit(int id, CancellationToken cancellationToken)
         {
             ViewBag.OrganizationSelectOptions = await _service.GetOrganizationsSelectItemsAsync(cancellationToken);
+            ViewBag.ConfigurationDefinitationSelectOption = await _service.GetConfigurationDefinitationSelectItemsAsync(cancellationToken);
             if (id == 0)
             {
                 return View(new ApplicationConfiguration());

@@ -22,18 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.DefaultValue)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateUserID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastUpdateUserID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastUpdateDateTime)
-            </th>
             <th>Action</th>
         </tr>
     </thead>
@@ -48,18 +36,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DefaultValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateUserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdateUserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdateDateTime)
             </td>
             <td class="text-center">
                 <a class="text-gray-600" asp-action="AddOrEdit" asp-route-id="@item.ID"><i class="bi bi-pencil-square"></i></a>

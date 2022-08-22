@@ -41,6 +41,16 @@ namespace EDSQConfig.API.Controllers
             return Ok(response);
 
         }
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(List<GetConfigurationDefinitionByIdResponse>), 200)]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id, [FromQuery] GetConfigurationDefinitionByIdQuery query)
+        {
+            query.Id = id;
+            var response = await Mediator.Send(query);
+            return Ok(response);
+
+        }
 
         [Produces("application/json")]
         [ProducesResponseType(typeof(Unit),200)]
