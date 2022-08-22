@@ -52,10 +52,10 @@ namespace EDSQConfig.Application.Test.TestApplicationConfigurations.Commands
             var handler = new UpdateAppConfigHandler(_dbContext);
 
             // Act
-            var ex = await Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(command, cancellationToken));
+            var result = await Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(command, cancellationToken));
 
             // Assert           
-            Assert.Equal("Invalid ApplicationConfiguration id.", ex.Message);
+            Assert.Equal("Invalid ApplicationConfiguration id.", result.Message);
         }
 
         [Theory]
