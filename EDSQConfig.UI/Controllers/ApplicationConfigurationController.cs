@@ -13,14 +13,14 @@ namespace EDSQConfig.UI.Controllers
             _service = service;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
-            var applicationConfiguration = new List<ApplicationConfiguration>();
+            var applicationConfiguration = await _service.ListAsync(cancellationToken);
             return View(applicationConfiguration);
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddOrEdit(int id, CancellationToken cancellationToken)
+        public async Task<IActionResult> AddOrEdit(CancellationToken cancellationToken, int id = 0)
         {
             ViewBag.OrganizationSelectOptions = await _service.GetOrganizationsSelectItemsAsync(cancellationToken);
             ViewBag.ConfigurationDefinitationSelectOption = await _service.GetConfigurationDefinitationSelectItemsAsync(cancellationToken);
@@ -30,7 +30,7 @@ namespace EDSQConfig.UI.Controllers
             }
             else
             {
-                var applicationConfiguration = new ApplicationConfiguration();
+                var applicationConfiguration = await _service.GetByIdAsync(id, cancellationToken);
 
                 //await _mediator.Send(new GetApplicationConfigurationDetailRequest { Id = id });
                 if (applicationConfiguration == null)
@@ -44,20 +44,18 @@ namespace EDSQConfig.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddOrEdit(int id, [Bind("ID,ApplicationCode,OrganizationID,ConfigurationDefinitionID,ConfigurationValue,DisabledDateTime")] ApplicationConfiguration applicationConfiguration)
+        public IActionResult AddOrEdit(int id, [Bind("ID,ApplicationCode,OrganizationID,ConfigurationDefinitionID,ConfigurationValue,DisabledDateTime")] ApplicationConfiguration applicationConfiguration, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
-                //if (id == 0)
-                //{
-                //    var command = new CreateApplicationConfigurationCommand { ApplicationConfiguration = applicationConfiguration };
-                //    _mediator.Send(command);
-                //}
-                //else
-                //{
-                //    var command = new UpdateApplicationConfigurationCommand { applicationConfiguration = applicationConfiguration };
-                //    _mediator.Send(command);
-                //}
+                if (id == 0)
+                {
+                    var command = _service.CreateAsync(applicationConfiguration, cancellationToken);
+                }
+                else
+                {
+                    var command = _service.UpdateAsync(id, applicationConfiguration, cancellationToken);
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(applicationConfiguration);
