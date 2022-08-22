@@ -59,5 +59,24 @@ namespace EDSQConfig.UI.Infrastructure
             var message = await apiResponse.Content.ReadAsStringAsync();
             throw new BadRequestException(message);
         }
+
+        public async Task<string> PutAsync(string urlPath, object postData, string token = "", CancellationToken cancellationToken = default)
+        {
+            var url = $"{_httpClient.BaseAddress?.AbsoluteUri}{urlPath}";
+            var request = new HttpRequestMessage(HttpMethod.Put, url);
+            request.Headers.Accept.Clear();
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var jsonContent = JsonSerializer.Serialize(postData);
+            request.Content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            var apiResponse = await _httpClient.SendAsync(request, cancellationToken);
+            if (apiResponse.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                var responseData = await apiResponse.Content.ReadAsStringAsync();
+                return responseData;
+            }
+            var message = await apiResponse.Content.ReadAsStringAsync();
+            throw new BadRequestException(message);
+        }
     }
 }

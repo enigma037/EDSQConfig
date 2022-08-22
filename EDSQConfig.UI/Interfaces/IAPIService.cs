@@ -4,5 +4,6 @@
     {
         Task<T> GetAsync<T>(string urlPath, string token = "", CancellationToken cancellationToken = new CancellationToken()) where T : class;
         Task<string> PostAsync(string urlPath, object postData, string token = "", CancellationToken cancellationToken = new CancellationToken());
+        Task<string> PutAsync(string urlPath, object postData, string token = "", CancellationToken cancellationToken = new CancellationToken());
     }
 }
