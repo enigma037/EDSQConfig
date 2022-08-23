@@ -20,14 +20,14 @@
                 <span asp-validation-for="ApplicationCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OrganizationID" class="control-label"></label>
-                @Html.DropDownListFor(d=>d.OrganizationID, new SelectList(organizationSelectOptions, "Id", "Name"), "Select Organization", new {@class="form-control"})
-                <span asp-validation-for="OrganizationID" class="text-danger"></span>
+                <label asp-for="OrganizationId" class="control-label"></label>
+                @Html.DropDownListFor(d=>d.OrganizationId, new SelectList(organizationSelectOptions, "Id", "Name"), "Select Organization", new {@class="form-control"})
+                <span asp-validation-for="OrganizationId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConfigurationDefinitionID" class="control-label"></label>
-                @Html.DropDownListFor(d=>d.ConfigurationDefinitionID, new SelectList(configuratinDefinitionSelectOptions, "Id", "Name"), "Select Configuration Definition", new {@class="form-control"})
-                <span asp-validation-for="ConfigurationDefinitionID" class="text-danger"></span>
+                <label asp-for="ConfigurationDefinitionId" class="control-label"></label>
+                @Html.DropDownListFor(d=>d.ConfigurationDefinitionId, new SelectList(configuratinDefinitionSelectOptions, "Id", "Name"), "Select Configuration Definition", new {@class="form-control"})
+                <span asp-validation-for="ConfigurationDefinitionId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ConfigurationValue" class="control-label"></label>

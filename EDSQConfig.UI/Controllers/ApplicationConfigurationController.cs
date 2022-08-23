@@ -44,7 +44,7 @@ namespace EDSQConfig.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit(int id, [Bind("ID,ApplicationCode,OrganizationID,ConfigurationDefinitionID,ConfigurationValue,DisabledDateTime")] ApplicationConfiguration applicationConfiguration, CancellationToken cancellationToken)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("ID,ApplicationCode,OrganizationId,ConfigurationDefinitionId,ConfigurationValue")] ApplicationConfiguration applicationConfiguration, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {

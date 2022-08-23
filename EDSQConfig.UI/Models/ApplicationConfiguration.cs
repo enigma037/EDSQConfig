@@ -8,10 +8,11 @@ namespace EDSQConfig.UI.Models
         public int ID { get; set; }
         [StringLength(12)]
         public string ApplicationCode { get; set; }
-        public int OrganizationID { get; set; }
-        public int ConfigurationDefinitionID { get; set; }
+        public int OrganizationId { get; set; }
+        public int ConfigurationDefinitionId { get; set; }
         [StringLength(256)]
         public string ConfigurationValue { get; set; }
-        public DateTime? DisabledDateTime { get; set; }
+        public string OrganizationName { get; set; }
+        public string ConfigurationDefinitionName { get; set; }
     }
 }

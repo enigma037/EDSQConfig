@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EDSQConfig.Application.ApplicationConfigurations.Queries
+﻿namespace EDSQConfig.Application.ApplicationConfigurations.Queries
 {
     public class ListAppConfigsResponse
     {
@@ -13,5 +7,7 @@ namespace EDSQConfig.Application.ApplicationConfigurations.Queries
         public int OrganizationId { get; set; }
         public int ConfigurationDefinitionId { get; set; }
         public string ConfigurationValue { get; set; }
+        public string OrganizationName { get; set; }
+        public string ConfigurationDefinitionName { get; set; }
     }
 }

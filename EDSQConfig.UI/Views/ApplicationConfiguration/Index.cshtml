@@ -15,20 +15,18 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ApplicationCode)
+               App Code
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrganizationID)
+                Organization
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ConfigurationDefinitionID)
+                Configuration Type
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ConfigurationValue)
+                Configuration Value
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DisabledDateTime)
-            </th>
+            
             <th>Action</th>
         </tr>
     </thead>
@@ -39,16 +37,13 @@
                 @Html.DisplayFor(modelItem => item.ApplicationCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrganizationID)
+                @Html.DisplayFor(modelItem => item.OrganizationName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ConfigurationDefinitionID)
+                @Html.DisplayFor(modelItem => item.ConfigurationDefinitionName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ConfigurationValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisabledDateTime)
             </td>
             <td class="text-center">
                 <a class="text-gray-600" asp-action="AddOrEdit" asp-route-id="@item.ID"><i class="bi bi-pencil-square"></i></a>

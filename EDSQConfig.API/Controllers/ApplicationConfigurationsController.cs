@@ -15,7 +15,7 @@ namespace EDSQConfig.API.Controllers
         [HttpGet]
         public async Task<IActionResult> List([FromQuery] ListAppConfigsQuery query)
         {
-            var response = await Mediator.Send(query);
+            var response = await Mediator.Send(query); 
 
             return Ok(response);
         }
