@@ -1,5 +1,6 @@
 ﻿using EDSQConfig.Application.ConfigurationDefinitions.Commands;
 using EDSQConfig.Application.ConfigurationDefinitions.Queries;
+using EDSQConfig.Application.Organizations.Queries;
 using EDSQConfig.Common.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -79,6 +80,16 @@ namespace EDSQConfig.API.Controllers
             {
                 return NotFound(ex.Message);
             }
+        }
+
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(ListConfigDefSelectOptionsResponse), 200)]
+        [HttpGet("select-options")]
+        public async Task<IActionResult> SelectOptions()
+        {
+            var query = new ListConfigDefSelectOptionsQuery();
+            var response = await Mediator.Send(query);
+            return Ok(response);
         }
     }
 }

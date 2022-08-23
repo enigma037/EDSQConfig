@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EDSQConfig.Application.Organizations.Queries
+namespace EDSQConfig.Application.ConfigurationDefinitions.Queries
 {
     public class ListConfigDefSelectOptionsHandler : IRequestHandler<ListConfigDefSelectOptionsQuery, List<ListConfigDefSelectOptionsResponse>>
     {

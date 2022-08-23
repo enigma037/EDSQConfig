@@ -19,14 +19,16 @@ namespace EDSQConfig.API.Controllers
 
         }
 
+
         [Produces("application/json")]
-        [ProducesResponseType(typeof(ListConfigDefSelectOptionsResponse), 200)]
+        [ProducesResponseType(typeof(ListOrganizationSelectOptionsResponse), 200)]
         [HttpGet("select-options")]
         public async Task<IActionResult> SelectOptions()
         {
-            var query = new ListConfigDefSelectOptionsQuery();
+            var query = new ListOrganizationSelectOptionsQuery();
             var response = await Mediator.Send(query);
             return Ok(response);
         }
+
     }
 }

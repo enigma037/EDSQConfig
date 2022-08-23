@@ -1,4 +1,4 @@
-﻿namespace EDSQConfig.Application.Organizations.Queries
+﻿namespace EDSQConfig.Application.ConfigurationDefinitions.Queries
 {
     public class ListConfigDefSelectOptionsResponse
     {
