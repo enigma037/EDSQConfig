@@ -44,17 +44,17 @@ namespace EDSQConfig.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddOrEdit(int id, [Bind("ID,ApplicationCode,OrganizationID,ConfigurationDefinitionID,ConfigurationValue,DisabledDateTime")] ApplicationConfiguration applicationConfiguration, CancellationToken cancellationToken)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("ID,ApplicationCode,OrganizationID,ConfigurationDefinitionID,ConfigurationValue,DisabledDateTime")] ApplicationConfiguration applicationConfiguration, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
                 if (id == 0)
                 {
-                    var command = _service.CreateAsync(applicationConfiguration, cancellationToken);
+                    var command = await _service.CreateAsync(applicationConfiguration, cancellationToken);
                 }
                 else
                 {
-                    var command = _service.UpdateAsync(id, applicationConfiguration, cancellationToken);
+                    var command = await _service.UpdateAsync(id, applicationConfiguration, cancellationToken);
                 }
                 return RedirectToAction(nameof(Index));
             }
