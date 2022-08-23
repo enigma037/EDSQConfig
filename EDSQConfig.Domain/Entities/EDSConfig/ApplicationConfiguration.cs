@@ -4,7 +4,7 @@ namespace EDSQConfig.Domain.Entities.EDSConfig
 {
     public class ApplicationConfiguration 
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string ApplicationCode { get; set; }
         public int OrganizationId { get; set; }
         public int ConfigurationDefinitionId { get; set; }

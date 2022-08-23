@@ -48,7 +48,7 @@ namespace EDSQConfig.Application.Test
             // Insert Application Configuration
             dbContext.ApplicationConfigurations.Add(new ApplicationConfiguration
             {
-                Id = _applicationConfigId,
+                ID = _applicationConfigId,
                 ApplicationCode = "EDS",
                 ConfigurationDefinitionId = 1,
                 ConfigurationValue = "ABC",

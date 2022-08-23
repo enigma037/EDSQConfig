@@ -9,8 +9,8 @@ namespace EDSQConfig.Infrastructure.Persistence.Configuration
         public void Configure(EntityTypeBuilder<ApplicationConfiguration> builder)
         {
             builder.ToTable("ApplicationConfiguration");
-            builder.HasKey(h => h.Id);
-            builder.Property(p => p.Id)
+            builder.HasKey(h => h.ID);
+            builder.Property(p => p.ID)
                    .UseIdentityColumn(1, 1)
                    .ValueGeneratedOnAdd();
 

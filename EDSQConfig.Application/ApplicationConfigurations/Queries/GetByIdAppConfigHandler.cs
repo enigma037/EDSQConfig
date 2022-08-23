@@ -26,7 +26,7 @@ namespace EDSQConfig.Application.ApplicationConfigurations.Queries
 
             var response = new GetByIdAppConfigResponse
             {
-                Id = dbAppConfig.Id,
+                Id = dbAppConfig.ID,
                 OrganizationId = dbAppConfig.OrganizationId,
                 ConfigurationDefinitionId = dbAppConfig.ConfigurationDefinitionId,
                 ConfigurationValue = dbAppConfig.ConfigurationValue,

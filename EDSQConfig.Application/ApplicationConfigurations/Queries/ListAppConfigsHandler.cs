@@ -26,7 +26,7 @@ namespace EDSQConfig.Application.ApplicationConfigurations.Queries
                                               .Include(i => i.ConfigurationDefinition)
                                               .Select(s => new ListAppConfigsResponse
                                               {
-                                                  Id = s.Id,
+                                                  Id = s.ID,
                                                   ApplicationCode = s.ApplicationCode,
                                                   ConfigurationValue = s.ConfigurationValue,
                                                   ConfigurationDefinitionId = s.ConfigurationDefinitionId,
